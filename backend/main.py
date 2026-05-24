@@ -1,7 +1,7 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import time_blocks, tasks, focus_sessions, analytics, chat
+from routers import time_blocks, tasks, focus_sessions, analytics, chat, ai
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -26,6 +26,7 @@ app.include_router(tasks.router)
 app.include_router(focus_sessions.router)
 app.include_router(analytics.router)
 app.include_router(chat.router)
+app.include_router(ai.router)
 
 
 @app.get("/")
