@@ -1,13 +1,14 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import time_blocks, tasks, focus_sessions, analytics
+from routers import time_blocks, tasks, focus_sessions, analytics, chat
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     time_blocks.init_db()
     tasks.init_db()
     focus_sessions.init_db()
+    chat.init_db()
     yield
 
 app = FastAPI(title="AI TimeMate API", version="0.1.0", lifespan=lifespan)
@@ -24,6 +25,7 @@ app.include_router(time_blocks.router)
 app.include_router(tasks.router)
 app.include_router(focus_sessions.router)
 app.include_router(analytics.router)
+app.include_router(chat.router)
 
 
 @app.get("/")

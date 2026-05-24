@@ -10,19 +10,13 @@ interface AIChatState {
   isTyping: boolean
   
   addMessage: (role: 'user' | 'assistant', content: string) => void
+  setMessages: (messages: AIChatState['messages']) => void
   clearMessages: () => void
   setIsTyping: (typing: boolean) => void
 }
 
 export const useAIChatStore = create<AIChatState>((set) => ({
-  messages: [
-    {
-      id: '1',
-      role: 'assistant',
-      content: '早上好！我是你的时间管理助手。今天有什么计划？',
-      timestamp: new Date().toISOString(),
-    },
-  ],
+  messages: [],
   isTyping: false,
   
   addMessage: (role, content) => set((state) => ({
@@ -36,6 +30,7 @@ export const useAIChatStore = create<AIChatState>((set) => ({
       },
     ],
   })),
+  setMessages: (messages) => set({ messages }),
   clearMessages: () => set({ messages: [] }),
   setIsTyping: (typing) => set({ isTyping: typing }),
 }))
