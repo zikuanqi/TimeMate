@@ -3,6 +3,7 @@ import { WeekView } from '@/components/calendar/WeekView'
 import { TaskPanel } from '@/components/TaskPanel'
 import { ChatPanel } from '@/components/chat/ChatPanel'
 import { FocusSessionPanel } from '@/components/FocusSessionPanel'
+import { AnalyticsPanel } from '@/components/AnalyticsPanel'
 import { Calendar, TimerIcon, BarChart3, MessageSquare, ListChecks } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -58,11 +59,7 @@ function App() {
         {activeTab === 'calendar' && <WeekView />}
         {activeTab === 'tasks' && <TaskPanel />}
         {activeTab === 'timer' && <FocusSessionPanel />}
-        {activeTab === 'analytics' && (
-          <div className="flex items-center justify-center h-full text-muted-foreground">
-            分析仪表盘即将上线
-          </div>
-        )}
+        {activeTab === 'analytics' && <AnalyticsPanel />}
         {activeTab === 'chat' && <ChatPanel />}
       </main>
     </div>
